@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    
+
+    <style>
+        /* styles.css */
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin:-10px 0px 0px 0px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: linear-gradient(90deg, #4CAF50, #2E7D32);
+            text-align: center;
+            color: white;
+            padding: 1px;
+        }
+
+        header.dark-mode {
+            background-color: #444;
+        }
+
+        /* Navigation Styles */
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* User Info Styles */
+        #user-info {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #user-info img {
+            margin-right: 10px;
+        }
+
+        /* Filters Styles */
+        #filters {
+            margin: 20px;
+        }
+
+        #category-filters {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #category-filters label {
+            margin: 5px 15px;
+        }
+
+        /* News Container Styles */
+        #news-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* News Item Styles */
+        .news-item {
+            background-color: #f9f9f9;
+            width: 20%;
+            margin: 2px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: scale(1.05);
+        }
+
+        .news-item img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+        }
+
+        .news-item h2 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .news-item p {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .news-item .description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .news-item .see-more {
+            color: rgb(40, 40, 73);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .news-item .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 10px;
+            color: #777;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode .news-item {
+            background-color: #333;
+            color: white;
+        }
+
+        body.dark-mode .news-item .footer {
+            color: #bbb;
+        }
+
+        body.dark-mode .news-item .see-more {
+            color: #66ccff;
+        }
+
+        /* Dark Mode for Buttons */
+        button {
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5555555e;
+            border-color: #77777767;
+        }
+
+        body.dark-mode button {
+            border-color: #4444446c;
+        }
+
+        /* Dark Mode Toggle Button */
+        body.dark-mode .dark-mode-toggle {
+            background-color: #333;
+            color: white;
+        }
+
+        body .dark-mode-toggle {
+            background-color: #fff;
+            color: black;
+        }
+
+        #user-picture {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: default;
+        }
+        .bokor-regular {
+            font-family: "Bokor", system-ui, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .sevillana-regular {
+            font-family: "Sevillana", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .caveat-font {
+            font-family: "Caveat", cursive;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+        #logout-btn{
+            border: none;
+        }
+        .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav style="display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; background: linear-gradient(90deg, #4CAF50, #2E7D32); height: 60px;">
+            <!-- Left Section: Logo + App Name -->
+            <div style="display: flex; align-items: center;">
+                <!-- Logo image -->
+                <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; padding-left: 25px;">
+                
+                <!-- Text -->
+                <h1 class="caveat-font" style="font-size: 24px; margin: 0; color: white; font-weight: 600;">Bartadhara</h1>
+            </div>
+            
+            
+            <!-- Right Section -->
+            <div id="auth-section" style="display: flex; align-items: center; gap: 10px;">
+                <!-- Login/Register Links -->
+                <div id="auth-links" style="display: none;">
+                    <a href="register.html">Register</a>
+                    <a href="login.html">Login</a>
+                </div>
+                
+                <!-- User Info -->
+                <div id="user-info" style="display: none; align-items: center; gap: 10px;">
+                    <img id="user-picture" src="user-image.jpg" alt="User Picture">
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <button class="dark-mode-toggle" id="dark-mode-toggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background-color: linear-gradient(90deg, #4CAF50, #2E7D32); color: linear-gradient(90deg, #4CAF50, #2E7D32);; border: none; cursor: pointer; border-radius: 50%;"><i class="fas fa-moon"></i></button>
+    <div id="category-filters" style="flex-grow: 1; text-align: center;">
+        <section id="filters">
+            <div id="category-filters-container"></div>
+        </section>
+    </div>
+    <!-- Date Picker for selecting a date -->
+<label for="date-picker">Select a Date:</label>
+<input type="date" id="date-picker" name="date" />
+    <main>
+        <section id="news-container">
+            <p>Loading news...</p>
+        </section>
+    </main>
+    
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const newsContainer = document.getElementById('news-container');
+        const categoryFilters = document.getElementById('category-filters');
+        const userInfo = document.getElementById('user-info');
+        const userName = document.getElementById('user-name');
+        const userPicture = document.getElementById('user-picture');
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const authLinks = document.getElementById('auth-links');
+        const logoutButton = document.getElementById('logout-btn');
+        const datePicker = document.getElementById('date-picker');
+
+
+        let newsData = [];
+        let selectedCategories = [];
+
+        // Fetch user info from localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (user) {
+            // User is logged in
+            userPicture.src = user.picture || 'default-user.png'; // Set user picture (fallback if not found)
+            userInfo.style.display = 'flex'; // Show user info
+            authLinks.style.display = 'none'; // Hide auth links
+        } else {
+            // User is not logged in
+            userInfo.style.display = 'none'; // Hide user info
+            authLinks.style.display = 'flex'; // Show auth links
+        }
+
+        // Logout functionality
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                localStorage.removeItem('user'); // Remove user data from localStorage
+                alert('You have been logged out successfully.'); // Optional alert
+                window.location.reload(); // Reload the page to update UI
+            });
+        }
+        // Load news data from server
+        async function loadNews() {
+            try {
+                const response = await fetch('http://localhost:8080/news');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch news');
+                }
+
+                newsData = await response.json();
+                renderNews(newsData);
+                renderCategoryFilters(newsData);
+            } catch (error) {
+                console.error('Error loading news:', error);
+                newsContainer.innerHTML = '<p>Error loading news. Please try again later.</p>';
+            }
+        }
+
+        // Render news items
+        function renderNews(filteredNews) {
+            newsContainer.innerHTML = ''; // Clear previous content
+
+            if (filteredNews.length === 0) {
+                newsContainer.innerHTML = '<p>No news available for the selected categories.</p>';
+                return;
+            }
+
+            filteredNews.forEach(news => {
+                const newsItem = document.createElement('div');
+                newsItem.classList.add('news-item');
+
+                newsItem.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" onerror="this.onerror=null; this.src='fallback-image.jpg';">
+                    <h2>${news.title}</h2>
+                    <p class="description">${news.description}</p>
+                    <button class="see-more" data-id="${news.id}">See more</button>
+                    <div class="footer">
+                        <span>${news.date}</span>
+                        <span>${news.category}</span>
+                    </div>
+                `;
+
+                newsContainer.appendChild(newsItem);
+            });
+
+            // Add event listeners for "See More" buttons
+            document.querySelectorAll('.see-more').forEach(button => {
+                button.addEventListener('click', () => {
+                    const newsID = button.getAttribute('data-id');
+                    viewNewsDetails(newsID);
+                });
+            });
+        }
+
+        // Handle date selection
+        datePicker.addEventListener('change', (e) => {
+            const selectedDate = e.target.value;
+
+            if (selectedDate) {
+                // Filter news by selected date
+                const filteredNews = newsData.filter(news => {
+                    const newsDate = new Date(news.date);
+                    const selectedDateObj = new Date(selectedDate);
+                    // Compare only the date part (ignoring the time)
+                    return newsDate.toDateString() === selectedDateObj.toDateString();
+                });
+                renderNews(filteredNews);
+            } else {
+                // If no date selected, show all news
+                renderNews(newsData);
+            }
+        });
+
+        // Render category filters
+        function renderCategoryFilters(newsData) {
+            const categories = [...new Set(newsData.map(news => news.category))];
+            categoryFilters.innerHTML = ''; // Clear previous filters
+
+            categories.forEach(category => {
+                const label = document.createElement('label');
+                label.innerHTML = `
+                    <input type="checkbox" value="${category}"> ${category}
+                `;
+                categoryFilters.appendChild(label);
+            });
+
+            categoryFilters.addEventListener('change', handleCategoryFilter);
+        }
+
+        // Handle category filter change
+        function handleCategoryFilter() {
+            selectedCategories = Array.from(categoryFilters.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+
+            if (selectedCategories.length === 0) {
+                renderNews(newsData); // Show all news if no categories are selected
+            } else {
+                const filteredNews = newsData.filter(news => selectedCategories.includes(news.category));
+                renderNews(filteredNews);
+            }
+        }
+
+        // Navigate to news details page
+        function viewNewsDetails(newsID) {
+            console.log(`Navigating to news details with ID: ${newsID}`);
+            window.location.href = `news-details.html?id=${newsID}`;
+        }
+
+        // Dark mode toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Change button icon based on the current mode
+            darkModeToggle.innerHTML = document.body.classList.contains('dark-mode')
+                ? '<i class="fas fa-sun"></i>'  // Light Mode Icon
+                : '<i class="fas fa-moon"></i>'; // Dark Mode Icon
+        });
+
+        
+
+        // Initial load
+        loadNews();
+    });
+
+</script>
+    
+    
+</body>
+</html>

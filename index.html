@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional News Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Updated styles are provided below */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <h1>Global News</h1>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-btn">Log In</button>
+                <button id="signup-btn">Sign Up</button>
+                <button id="signup-btn">Profile</button>
+               
+            </div>
+        </div>
+        <nav>
+            <a href="#"><input type="checkbox">Home</a>
+            <a href="#"><input type="checkbox">World</a>
+            <a href="#"><input type="checkbox">Politics</a>
+            <a href="#"><input type="checkbox">Technology</a>
+            <a href="#"><input type="checkbox">Sports</a>
+            <a href="#"><input type="checkbox">Entertainment</a>
+            <label for="date-filter">Filter by Date:</label>
+            <input type="date" id="date-filter">
+        </nav>
+        <div class="breaking-news">
+            <marquee>Breaking News: New tech innovation reshapes industries | Global Summit highlights...</marquee>
+        </div>
+    </header>
+    <main>
+        <section id="featured-news">
+            <h2>Featured News</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="https://via.placeholder.com/300" alt="Featured News">
+                    <h3>Featured Headline 1</h3>
+                    <p>Summary of the featured news...</p>
+                </div>
+                <div class="featured-item">
+                    <img src="https://via.placeholder.com/300" alt="Featured News">
+                    <h3>Featured Headline 2</h3>
+                    <p>Summary of the featured news...</p>
+                </div>
+            </div>
+        </section>
+<section id="filters">
+            <h2>Filter by Category</h2>
+            <div id="category-filters"></div>
+        </section>
+
+        <section id="news-container">
+            <p>Loading news...</p>
+        </section>
+
+        <div id="pagination">
+            <button id="prev-page" disabled>Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button id="next-page">Next</button>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Global News. All Rights Reserved.
+    </footer>
+<script src="js/script.js"></script>
+    <script>
+        // Updated JavaScript functionality is provided below
+    </script>
+</body>
+</html>
