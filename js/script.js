@@ -103,15 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span>${news.date}</span>
                     <span>${news.category}</span>
                 </div>
-            `;
+                `;
 
             newsContainer.appendChild(newsItem);
-        });
 
-        document.querySelectorAll('.see-more').forEach(button => {
-            button.addEventListener('click', () => {
-                const newsID = button.getAttribute('data-id');
-                viewNewsDetails(newsID);
+            document.querySelectorAll('.see-more').forEach(button => {
+                button.addEventListener('click', () => {
+                    const newsID = button.getAttribute('data-id');
+        
+                    // Open the news details in a new tab
+                    window.open(`news-details.html?id=${newsID}`, '_blank');
+                });
             });
         });
     }

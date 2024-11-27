@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <nav style="display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; background: linear-gradient(90deg, #4CAF50, #2E7D32); height: 60px;">
+            <!-- Left Section: Logo + App Name -->
+            <div style="display: flex; align-items: center;">
+                <!-- Logo image -->
+                <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; padding-left: 25px;">
+                
+                <!-- Text -->
+                <h1 class="caveat-font" style="font-size: 24px; margin: 0; color: white; font-weight: 600;">Bartadhara</h1>
+            </div>
+            
+            <!-- Middle Section: Navigation Links -->
+            <div id="nav-links" style="display: flex; gap: 20px; font-size: 18px;">
+                <a href="index.html" style="text-decoration: none; color: white; font-weight: 500;">Home</a>
+                <a href="global-news.html" style="text-decoration: none; color: white; font-weight: 500;">Global News</a>
+                <a href="weather-update.html" style="text-decoration: none; color: white; font-weight: 500;">Weather Update</a>
+                <a href="about.html" style="text-decoration: none; color: white; font-weight: 500;">About</a>
+            </div>
+            
+            <!-- Right Section -->
+            <div id="auth-section" style="display: flex; align-items: center; gap: 10px;">
+                <!-- Login/Register Links -->
+                <div id="auth-links" style="display: none;">
+                    <a href="register.html" style="text-decoration: none; color: white; font-weight: 500;">Register</a>
+                    <a href="login.html" style="text-decoration: none; color: white; font-weight: 500;">Login</a>
+                </div>
+                
+                <!-- User Info -->
+                <div id="user-info" style="display: none; align-items: center; gap: 10px;">
+                    <img id="user-picture"  alt="User Picture" style="height: 40px; width: 40px; border-radius: 50%; border: 2px solid white; cursor: pointer;">
+                    <button id="logout-btn" style="background: none; color: white; border: 1px solid white; padding: 5px 10px; cursor: pointer;">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="news-details">
+            <p>Loading news details...</p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>Bartadhara provides the latest news updates from around the globe. Stay informed with accurate, fast, and reliable news.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="global-news.html">Global News</a></li>
+                    <li><a href="weather-update.html">Weather Update</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@bartadhara.com</p>
+                <p>Phone: +880-123-456-789</p>
+                <p>Address: 123 Bartadhara Street, Dhaka, Bangladesh</p>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bartadhara. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/news-details.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
