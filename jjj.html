@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News App</title>
+    <title>Bartadhara</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +92,7 @@
         .news-item {
             background-color: #f9f9f9;
             width: 20%;
-            margin: 2px;
+            margin-top: 15px;
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -135,7 +135,7 @@
             cursor: pointer;
         }
 
-        .news-item .footer {
+        .news-item {
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
@@ -219,6 +219,262 @@
         'GRAD' 0,
         'opsz' 24
         }
+/* Filters container */
+#filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(145deg, #e0e0e0, #ffffff);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0px;
+    gap: 15px;
+}
+
+/* Date Picker Section */
+.date-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    background-color: #007bff;
+    border-radius: 8px;
+    padding: 5px;
+    color: #fff;
+}
+
+.date-section label {
+    font-size: 18px;
+    margin-right: 5px;
+    color: #fff;
+}
+
+.date-section input {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    width: 110px;
+    cursor: pointer;
+}
+
+.date-section input:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.75);
+}
+
+/* Category Filters Section */
+.categories-section {
+    flex-grow: 1;
+    max-width: 75%;
+    text-align: left;
+}
+
+.categories-section h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+#category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #e0e0e0;
+}
+
+/* Category Checkboxes */
+#category-filters label {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#category-filters label:hover {
+    background-color: #0056b3;
+}
+
+#category-filters input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: #007bff;
+}
+
+/* Scrollbar styles */
+#category-filters::-webkit-scrollbar {
+    width: 8px;
+}
+
+#category-filters::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 4px;
+}
+
+#category-filters::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #filters-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .date-section {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Pagination */
+#pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+#pagination-container button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#pagination-container button:hover:enabled {
+    background-color: #0056b3;
+}
+
+#current-page {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+/* Footer */
+.news-footer{
+    padding: 10px 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 10px;
+    color: #777;
+}
+
+.news-footer p {
+    margin: 0;
+    line-height: 1.6;
+}
+.news-footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.news-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Footer Columns */
+.footer-about,
+.footer-links,
+.footer-contact {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f39c12;
+}
+
+.footer p {
+    line-height: 1.6;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 5px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+    color: #f39c12;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
 
 
 
@@ -236,198 +492,295 @@
                 <h1 class="caveat-font" style="font-size: 24px; margin: 0; color: white; font-weight: 600;">Bartadhara</h1>
             </div>
             
+            <!-- Middle Section: Navigation Links -->
+            <div id="nav-links" style="display: flex; gap: 20px; font-size: 18px;">
+                <a href="index.html" style="text-decoration: none; color: white; font-weight: 500;">Home</a>
+                <a href="global-news.html" style="text-decoration: none; color: white; font-weight: 500;">Global News</a>
+                <a href="weather-update.html" style="text-decoration: none; color: white; font-weight: 500;">Weather Update</a>
+            </div>
             
             <!-- Right Section -->
             <div id="auth-section" style="display: flex; align-items: center; gap: 10px;">
                 <!-- Login/Register Links -->
                 <div id="auth-links" style="display: none;">
-                    <a href="register.html">Register</a>
-                    <a href="login.html">Login</a>
+                    <a href="register.html" style="text-decoration: none; color: white; font-weight: 500;">Register</a>
+                    <a href="login.html" style="text-decoration: none; color: white; font-weight: 500;">Login</a>
                 </div>
                 
                 <!-- User Info -->
                 <div id="user-info" style="display: none; align-items: center; gap: 10px;">
-                    <img id="user-picture" src="user-image.jpg" alt="User Picture">
-                    <button id="logout-btn">Logout</button>
+                    <img id="user-picture" src="user-image.jpg" alt="User Picture" style="height: 40px; width: 40px; border-radius: 50%; border: 2px solid white; cursor: pointer;">
+                    <button id="logout-btn" style="background: none; color: white; border: 1px solid white; padding: 5px 10px; cursor: pointer;">Logout</button>
                 </div>
             </div>
         </nav>
     </header>
     
-    <button class="dark-mode-toggle" id="dark-mode-toggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background-color: linear-gradient(90deg, #4CAF50, #2E7D32); color: linear-gradient(90deg, #4CAF50, #2E7D32);; border: none; cursor: pointer; border-radius: 50%;"><i class="fas fa-moon"></i></button>
-    <div id="category-filters" style="flex-grow: 1; text-align: center;">
-        <section id="filters">
-            <div id="category-filters-container"></div>
-        </section>
+    
+    <button class="dark-mode-toggle" id="dark-mode-toggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background-color: linear-gradient(90deg, #4CAF50, #2E7D32); color: linear-gradient(90deg, #4CAF50, #2E7D32); border: none; cursor: pointer; border-radius: 50%; z-index: 2;"><i class="fas fa-moon"></i></button>
+    
+    <div id="filters-container">
+        <!-- Date Picker Section -->
+        <div class="filter-section date-section">
+            <label for="date-picker">
+                <i class="fas fa-calendar-alt"></i>
+            </label>
+            <input type="date" id="date-picker" name="date" />
+        </div>
+    
+        <!-- Category Filters Section -->
+        <div class="filter-section categories-section">
+            <div id="category-filters">
+                <!-- Checkbox filters will be dynamically added here -->
+            </div>
+        </div>
     </div>
+    
+    
     <!-- Date Picker for selecting a date -->
-<label for="date-picker">Select a Date:</label>
-<input type="date" id="date-picker" name="date" />
+
     <main>
         <section id="news-container">
             <p>Loading news...</p>
         </section>
     </main>
+
+    <!-- Pagination -->
+    <div id="pagination-container">
+        <button id="prev-page" disabled>Previous</button>
+        <span id="current-page">Page 1</span>
+        <button id="next-page">Next</button>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>Bartadhara provides the latest news updates from around the globe. Stay informed with accurate, fast, and reliable news.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Categories</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@bartadhara.com</p>
+                <p>Phone: +880-123-456-789</p>
+                <p>Address: 123 Bartadhara Street, Dhaka, Bangladesh</p>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bartadhara. All Rights Reserved.</p>
+        </div>
+    </footer>
+
     
 <script>
         document.addEventListener('DOMContentLoaded', () => {
-        const newsContainer = document.getElementById('news-container');
-        const categoryFilters = document.getElementById('category-filters');
-        const userInfo = document.getElementById('user-info');
-        const userName = document.getElementById('user-name');
-        const userPicture = document.getElementById('user-picture');
-        const darkModeToggle = document.querySelector('.dark-mode-toggle');
-        const authLinks = document.getElementById('auth-links');
-        const logoutButton = document.getElementById('logout-btn');
-        const datePicker = document.getElementById('date-picker');
+            const newsContainer = document.getElementById('news-container');
+            const categoryFilters = document.getElementById('category-filters');
+            const userInfo = document.getElementById('user-info');
+            const userPicture = document.getElementById('user-picture');
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            const authLinks = document.getElementById('auth-links');
+            const logoutButton = document.getElementById('logout-btn');
+            const datePicker = document.getElementById('date-picker');
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+            const currentPageDisplay = document.getElementById('current-page');
 
+            let newsData = [];
+            let currentPage = 1;
+            const itemsPerPage = 20;
+            let selectedCategories = [];
 
-        let newsData = [];
-        let selectedCategories = [];
+            // Fetch user info from localStorage
+            const user = JSON.parse(localStorage.getItem('user'));
 
-        // Fetch user info from localStorage
-        const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                userPicture.src = user.picture || 'default-user.png';
+                userInfo.style.display = 'flex';
+                authLinks.style.display = 'none';
+            } else {
+                userInfo.style.display = 'none';
+                authLinks.style.display = 'flex';
+            }
 
-        if (user) {
-            // User is logged in
-            userPicture.src = user.picture || 'default-user.png'; // Set user picture (fallback if not found)
-            userInfo.style.display = 'flex'; // Show user info
-            authLinks.style.display = 'none'; // Hide auth links
-        } else {
-            // User is not logged in
-            userInfo.style.display = 'none'; // Hide user info
-            authLinks.style.display = 'flex'; // Show auth links
-        }
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    localStorage.removeItem('user');
+                    alert('You have been logged out successfully.');
+                    window.location.reload();
+                });
+            }
 
-        // Logout functionality
-        if (logoutButton) {
-            logoutButton.addEventListener('click', () => {
-                localStorage.removeItem('user'); // Remove user data from localStorage
-                alert('You have been logged out successfully.'); // Optional alert
-                window.location.reload(); // Reload the page to update UI
-            });
-        }
-        // Load news data from server
-        async function loadNews() {
-            try {
-                const response = await fetch('http://localhost:8080/news');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch news');
+            // User picture click event to view user's profile
+            if (userPicture) {
+                userPicture.addEventListener('click', () => {
+                    // Redirect to the user profile page with user ID or username
+                    window.location.href = `user-profile.html?id=${user.id}`;
+                });
+            }
+
+            // Load news data from server
+            async function loadNews() {
+                try {
+                    const response = await fetch('http://localhost:8080/news');
+                    if (!response.ok) throw new Error('Failed to fetch news');
+
+                    newsData = await response.json();
+                    // Sort news by date (newest first)
+                    newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                    renderPage();
+                    renderCategoryFilters(newsData);
+                } catch (error) {
+                    console.error('Error loading news:', error);
+                    newsContainer.innerHTML = '<p>Error loading news. Please try again later.</p>';
+                }
+            }
+
+            // Render news items for the current page
+            function renderPage() {
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const pageNews = newsData.slice(startIndex, endIndex);
+
+                renderNews(pageNews);
+
+                // Update pagination buttons
+                currentPageDisplay.textContent = `Page ${currentPage}`;
+                prevPageBtn.disabled = currentPage === 1;
+                nextPageBtn.disabled = endIndex >= newsData.length;
+            }
+
+            // Render news items
+            function renderNews(filteredNews) {
+                newsContainer.innerHTML = '';
+
+                if (filteredNews.length === 0) {
+                    newsContainer.innerHTML = '<p>No news available for the selected filters.</p>';
+                    return;
                 }
 
-                newsData = await response.json();
-                renderNews(newsData);
-                renderCategoryFilters(newsData);
-            } catch (error) {
-                console.error('Error loading news:', error);
-                newsContainer.innerHTML = '<p>Error loading news. Please try again later.</p>';
-            }
-        }
+                filteredNews.forEach(news => {
+                    const newsItem = document.createElement('div');
+                    newsItem.classList.add('news-item');
 
-        // Render news items
-        function renderNews(filteredNews) {
-            newsContainer.innerHTML = ''; // Clear previous content
+                    newsItem.innerHTML = `
+                        <img src="${news.image}" alt="${news.title}" onerror="this.onerror=null; this.src='fallback-image.jpg';">
+                        <h2>${news.title}</h2>
+                        <p class="description">${news.description}</p>
+                        <button class="see-more" data-id="${news.id}">See more</button>
+                        <div class="news-footer">
+                            <span>${news.date}</span>
+                            <span>${news.category}</span>
+                        </div>
+                    `;
 
-            if (filteredNews.length === 0) {
-                newsContainer.innerHTML = '<p>No news available for the selected categories.</p>';
-                return;
-            }
-
-            filteredNews.forEach(news => {
-                const newsItem = document.createElement('div');
-                newsItem.classList.add('news-item');
-
-                newsItem.innerHTML = `
-                    <img src="${news.image}" alt="${news.title}" onerror="this.onerror=null; this.src='fallback-image.jpg';">
-                    <h2>${news.title}</h2>
-                    <p class="description">${news.description}</p>
-                    <button class="see-more" data-id="${news.id}">See more</button>
-                    <div class="footer">
-                        <span>${news.date}</span>
-                        <span>${news.category}</span>
-                    </div>
-                `;
-
-                newsContainer.appendChild(newsItem);
-            });
-
-            // Add event listeners for "See More" buttons
-            document.querySelectorAll('.see-more').forEach(button => {
-                button.addEventListener('click', () => {
-                    const newsID = button.getAttribute('data-id');
-                    viewNewsDetails(newsID);
+                    newsContainer.appendChild(newsItem);
                 });
-            });
-        }
 
-        // Handle date selection
-        datePicker.addEventListener('change', (e) => {
-            const selectedDate = e.target.value;
+                document.querySelectorAll('.see-more').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const newsID = button.getAttribute('data-id');
+                        viewNewsDetails(newsID);
+                    });
+                });
+            }
 
-            if (selectedDate) {
-                // Filter news by selected date
-                const filteredNews = newsData.filter(news => {
-                    const newsDate = new Date(news.date);
+            // Apply date and category filters
+            function applyFilters() {
+                let filteredNews = newsData;
+
+                const selectedDate = datePicker.value;
+                if (selectedDate) {
                     const selectedDateObj = new Date(selectedDate);
-                    // Compare only the date part (ignoring the time)
-                    return newsDate.toDateString() === selectedDateObj.toDateString();
-                });
-                renderNews(filteredNews);
-            } else {
-                // If no date selected, show all news
-                renderNews(newsData);
+                    filteredNews = filteredNews.filter(news => {
+                        const newsDate = new Date(news.date);
+                        return newsDate.toDateString() === selectedDateObj.toDateString();
+                    });
+                }
+
+                if (selectedCategories.length > 0) {
+                    filteredNews = filteredNews.filter(news => selectedCategories.includes(news.category));
+                }
+
+                renderNews(filteredNews.slice(0, itemsPerPage)); // Apply filters and render first page
             }
-        });
 
-        // Render category filters
-        function renderCategoryFilters(newsData) {
-            const categories = [...new Set(newsData.map(news => news.category))];
-            categoryFilters.innerHTML = ''; // Clear previous filters
+            // Handle date selection
+            datePicker.addEventListener('change', applyFilters);
 
-            categories.forEach(category => {
-                const label = document.createElement('label');
-                label.innerHTML = `
-                    <input type="checkbox" value="${category}"> ${category}
-                `;
-                categoryFilters.appendChild(label);
+            // Render category filters
+            function renderCategoryFilters(newsData) {
+                const categories = [...new Set(newsData.map(news => news.category))];
+                categoryFilters.innerHTML = '';
+
+                categories.forEach(category => {
+                    const label = document.createElement('label');
+                    label.innerHTML = `
+                        <input type="checkbox" value="${category}"> ${category}
+                    `;
+                    categoryFilters.appendChild(label);
+                });
+
+                categoryFilters.addEventListener('change', () => {
+                    selectedCategories = Array.from(
+                        categoryFilters.querySelectorAll('input[type="checkbox"]:checked')
+                    ).map(checkbox => checkbox.value);
+
+                    applyFilters();
+                });
+            }
+
+            // Navigate to news details page
+            function viewNewsDetails(newsID) {
+                console.log(`Navigating to news details with ID: ${newsID}`);
+                window.location.href = `news-details.html?id=${newsID}`;
+            }
+
+            // Pagination button event listeners
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderPage();
+                }
             });
 
-            categoryFilters.addEventListener('change', handleCategoryFilter);
-        }
+            nextPageBtn.addEventListener('click', () => {
+                const maxPages = Math.ceil(newsData.length / itemsPerPage);
+                if (currentPage < maxPages) {
+                    currentPage++;
+                    renderPage();
+                }
+            });
 
-        // Handle category filter change
-        function handleCategoryFilter() {
-            selectedCategories = Array.from(categoryFilters.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+            // Dark mode toggle
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                darkModeToggle.innerHTML = document.body.classList.contains('dark-mode')
+                    ? '<i class="fas fa-sun"></i>'
+                    : '<i class="fas fa-moon"></i>';
+            });
 
-            if (selectedCategories.length === 0) {
-                renderNews(newsData); // Show all news if no categories are selected
-            } else {
-                const filteredNews = newsData.filter(news => selectedCategories.includes(news.category));
-                renderNews(filteredNews);
-            }
-        }
-
-        // Navigate to news details page
-        function viewNewsDetails(newsID) {
-            console.log(`Navigating to news details with ID: ${newsID}`);
-            window.location.href = `news-details.html?id=${newsID}`;
-        }
-
-        // Dark mode toggle
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-
-            // Change button icon based on the current mode
-            darkModeToggle.innerHTML = document.body.classList.contains('dark-mode')
-                ? '<i class="fas fa-sun"></i>'  // Light Mode Icon
-                : '<i class="fas fa-moon"></i>'; // Dark Mode Icon
+            // Initial load
+            loadNews();
         });
 
-        
-
-        // Initial load
-        loadNews();
-    });
 
 </script>
     

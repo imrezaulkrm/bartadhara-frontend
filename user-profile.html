@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and general styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Profile container */
+        .profile-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        /* Profile card styles */
+        .profile-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Profile header (Image and basic info) */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .profile-header h2,
+        .profile-header p {
+            margin: 5px 0;
+        }
+
+        /* Profile body */
+        .profile-body {
+            padding: 20px;
+        }
+
+        .profile-body h3 {
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .profile-body ul {
+            list-style-type: none;
+        }
+
+        .profile-body li {
+            margin: 5px 0;
+        }
+
+        /* Profile footer */
+        .profile-footer {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #f4f4f9;
+        }
+
+        .profile-footer button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .profile-footer button:hover {
+            background-color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- User Profile Card -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <img id="user-picture" class="profile-picture" src="default-user.png" alt="User Picture">
+                <h2 id="user-name">নাম: </h2>
+                <p id="user-email">ইমেইল: </p>
+            </div>
+            <div class="profile-body">
+                <h3>Categories</h3>
+                <ul id="user-categories">
+                    <!-- User categories will be populated here -->
+                </ul>
+            </div>
+            <div class="profile-footer">
+                <button id="edit-profile-btn">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get user id from URL params
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('id');
+
+            // Fetch user data from the server using the API
+            fetch(`http://localhost:8080/users/${userId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('User not found');
+                    }
+                    return response.json();
+                })
+                .then(user => {
+                    // Display user information
+                    document.getElementById('user-picture').src = user.picture || 'default-user.png';
+                    document.getElementById('user-name').textContent = `নাম: ${user.name}`;
+                    document.getElementById('user-email').textContent = `ইমেইল: ${user.email}`;
+
+                    // Display user categories
+                    const categoriesList = document.getElementById('user-categories');
+                    if (user.categories && user.categories.length > 0) {
+                        user.categories.forEach(category => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = category;
+                            categoriesList.appendChild(listItem);
+                        });
+                    } else {
+                        const noCategories = document.createElement('li');
+                        noCategories.textContent = 'কোন ক্যাটাগরি নেই';
+                        categoriesList.appendChild(noCategories);
+                    }
+                })
+                .catch(error => {
+                    // Show error message if user not found or if there's an issue with the API call
+                    document.querySelector('.profile-container').innerHTML = '<p>User not found.</p>';
+                });
+        });
+    </script>
+
+</body>
+</html>

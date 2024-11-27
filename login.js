@@ -15,7 +15,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     if (response.ok) {
         const userData = await response.json();
         localStorage.setItem('user', JSON.stringify(userData)); // Save user data in local storage
-        window.location.href = 'jjj.html'; // Redirect to home page
+        window.location.href = 'index.html'; // Redirect to home page
     } else {
         alert('Login failed. Please check your credentials and try again.');
     }
