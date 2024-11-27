@@ -1,168 +1,107 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <style>
-        /* Basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body and general styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        /* Profile container */
-        .profile-container {
-            width: 100%;
-            max-width: 600px;
-            padding: 20px;
-        }
-
-        /* Profile card styles */
-        .profile-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        /* Profile header (Image and basic info) */
-        .profile-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-        }
-
-        .profile-picture {
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .profile-header h2,
-        .profile-header p {
-            margin: 5px 0;
-        }
-
-        /* Profile body */
-        .profile-body {
-            padding: 20px;
-        }
-
-        .profile-body h3 {
-            margin-bottom: 10px;
-            color: #4CAF50;
-        }
-
-        .profile-body ul {
-            list-style-type: none;
-        }
-
-        .profile-body li {
-            margin: 5px 0;
-        }
-
-        /* Profile footer */
-        .profile-footer {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            background-color: #f4f4f9;
-        }
-
-        .profile-footer button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .profile-footer button:hover {
-            background-color: #2e7d32;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/user-profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <nav style="display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; background: linear-gradient(90deg, #4CAF50, #2E7D32); height: 60px;">
+            <!-- Left Section: Logo + App Name -->
+            <div style="display: flex; align-items: center;">
+                <!-- Logo image -->
+                <img src="img/logo.png" alt="Logo" style="height: 40px; margin-right: 10px; padding-left: 25px;">
+                
+                <!-- Text -->
+                <h1 class="caveat-font" style="font-size: 24px; margin: 0; color: white; font-weight: 600;">Bartadhara</h1>
+            </div>
+            
+            <!-- Middle Section: Navigation Links -->
+            <div id="nav-links" style="display: flex; gap: 20px; font-size: 18px;">
+                <a href="index.html" style="text-decoration: none; color: white; font-weight: 500;">Home</a>
+                <a href="global-news.html" style="text-decoration: none; color: white; font-weight: 500;">Global News</a>
+                <a href="weather-update.html" style="text-decoration: none; color: white; font-weight: 500;">Weather Update</a>
+                <a href="about.html" style="text-decoration: none; color: white; font-weight: 500;">About</a>
+            </div>
+            
+            <!-- Right Section -->
+            <div id="auth-section" style="display: flex; align-items: center; gap: 10px;">
+                <!-- Login/Register Links -->
+                <div id="auth-links" style="display: none;">
+                    <a href="register.html" style="text-decoration: none; color: white; font-weight: 500;">Register</a>
+                    <a href="login.html" style="text-decoration: none; color: white; font-weight: 500;">Login</a>
+                </div>
+                
+                <!-- User Info -->
+                <div id="user-info" style="display: none; align-items: center; gap: 10px;">
+                <img id="user-picture"  alt="User Picture" style="height: 40px; width: 40px; border-radius: 50%; border: 2px solid white; cursor: pointer;">
+                    <button id="logout-btn" style="background: none; color: white; border: 1px solid white; padding: 5px 10px; cursor: pointer;">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <div class="profile-container">
-        <!-- User Profile Card -->
         <div class="profile-card">
-            <div class="profile-header">
-                <img id="user-picture" class="profile-picture" src="default-user.png" alt="User Picture">
-                <h2 id="user-name">নাম: </h2>
-                <p id="user-email">ইমেইল: </p>
-            </div>
-            <div class="profile-body">
-                <h3>Categories</h3>
-                <ul id="user-categories">
-                    <!-- User categories will be populated here -->
-                </ul>
-            </div>
-            <div class="profile-footer">
-                <button id="edit-profile-btn">Edit Profile</button>
+            <img id="user-profile-picture" src="https://via.placeholder.com/150" alt="User's Profile Picture" />
+            <h1 id="user-name">John Doe</h1>
+            <p><strong>Email:</strong> <span id="user-email">johndoe@example.com</span></p>
+            <p><strong>Username:</strong> <span id="user-username">johndoe123</span></p>
+            <div class="button-group">
+                <button id="edit-btn">Update</button>
+                <button id="back-btn" onclick="window.history.back()">Back</button>
             </div>
         </div>
     </div>
+    
+    
+    
+    
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Get user id from URL params
-            const urlParams = new URLSearchParams(window.location.search);
-            const userId = urlParams.get('id');
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>Bartadhara provides the latest news updates from around the globe. Stay informed with accurate, fast, and reliable news.</p>
+            </div>
 
-            // Fetch user data from the server using the API
-            fetch(`http://localhost:8080/users/${userId}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('User not found');
-                    }
-                    return response.json();
-                })
-                .then(user => {
-                    // Display user information
-                    document.getElementById('user-picture').src = user.picture || 'default-user.png';
-                    document.getElementById('user-name').textContent = `নাম: ${user.name}`;
-                    document.getElementById('user-email').textContent = `ইমেইল: ${user.email}`;
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="global-news.html">Global News</a></li>
+                    <li><a href="weather-update.html">Weather Update</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
 
-                    // Display user categories
-                    const categoriesList = document.getElementById('user-categories');
-                    if (user.categories && user.categories.length > 0) {
-                        user.categories.forEach(category => {
-                            const listItem = document.createElement('li');
-                            listItem.textContent = category;
-                            categoriesList.appendChild(listItem);
-                        });
-                    } else {
-                        const noCategories = document.createElement('li');
-                        noCategories.textContent = 'কোন ক্যাটাগরি নেই';
-                        categoriesList.appendChild(noCategories);
-                    }
-                })
-                .catch(error => {
-                    // Show error message if user not found or if there's an issue with the API call
-                    document.querySelector('.profile-container').innerHTML = '<p>User not found.</p>';
-                });
-        });
-    </script>
+            <!-- Contact Info -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@bartadhara.com</p>
+                <p>Phone: +880-123-456-789</p>
+                <p>Address: 123 Bartadhara Street, Dhaka, Bangladesh</p>
+            </div>
+        </div>
 
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bartadhara. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/user-profile.js"></script>
+    <script src="js/script.js"></script> 
 </body>
 </html>
