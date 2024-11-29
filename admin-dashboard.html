@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Dashboard */
+        .dashboard {
+            display: flex;
+            height: 100vh;
+            font-family: Arial, sans-serif; /* ইউনিফর্ম ফন্ট */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100; /* সাইডবারটি অন্য কন্টেন্টের ওপর থাকবে */
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .sidebar ul li a:hover {
+            background: #444;
+            font-weight: bold; /* হোভার করলে লিঙ্কের ফন্ট ওয়েট বাড়াবে */
+        }
+
+        /* Content */
+        .content {
+            margin-left: 270px; /* সাইডবারের পাশে কন্টেন্ট দেখানোর জন্য */
+            padding: 20px;
+            background: #f4f4f4;
+            height: 100vh;
+            overflow-y: auto; /* কন্টেন্টের অতিরিক্ত অংশ স্ক্রল হবে */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        section {    
+            margin-bottom: 30px;
+            margin-left: 360px;
+            margin-right: 55px;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        /* Button */
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+        .dashboard-title{
+            font-family: auto;
+            text-align: center;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            background: #007bff;
+            color: #fff;
+            padding: 5px;
+            border-radius: 10px;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        /* News Cards */
+        #news-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .news-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            width: calc(33% - 20px);
+            position: relative;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: scale(1.05); /* কার্ড হোভার করলে একটু বড় হবে */
+        }
+
+        .news-card button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .news-card button.update-btn {
+            background-color: #007bff;
+            margin-right: 5px;
+        }
+
+        .news-card button:hover {
+            background-color: #ff2a2a;
+        }
+
+        .news-card button.update-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .news-card {
+                width: calc(50% - 20px); /* বড় স্ক্রীনে ৫০% */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-card {
+                width: 100%; /* ছোট স্ক্রীনে পূর্ণ প্রস্থ */
+            }
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 210px; /* সাইডবারের পরামর্শ */
+            }
+        }
+
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#news-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.news-card {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.news-card h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.news-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.news-card button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.news-card .delete-btn {
+    background-color: #e74c3c;
+    color: #ffffff;
+}
+
+.news-card .update-btn {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.news-card .view-btn {
+    background-color: #2ecc71;
+    color: #ffffff;
+}
+
+/* General Styling for the Form */
+#add-news-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style for the form and form fields */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Flexbox for Title and Category in same line */
+.form-group.flex-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Each form field styling */
+.form-field {
+    flex: 1;
+    min-width: 220px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-field input, 
+.form-field select, 
+.form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Styling for the description textarea */
+textarea {
+    height: 150px;
+}
+
+/* Image and Date section */
+.form-group.flex-row .form-field input[type="file"] {
+    padding: 0;
+}
+
+input[type="date"] {
+    padding: 10px;
+}
+
+/* Button Styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Add some spacing to the form group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .form-group.flex-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-field {
+        min-width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="#" id="home-btn">Home</a></li>
+                <li><a href="#" id="news-management-btn">News Management</a></li>
+                <li><a href="#" id="user-management-btn">User Management</a></li>
+                <li><a href="#" id="admin-management-btn">Admin Management</a></li>
+                <li><a href="#logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home-section" class="section">
+            <h2 class="dashboard-title">Dashboard Overview</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>Total News</h3>
+                    <p id="total-news">Loading...</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Total Users</h3>
+                    <p id="total-users">Loading...</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Total Admins</h3>
+                    <p id="total-admins">Loading...</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="news-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- News Management Section -->
+        <section id="news-management" class="section">
+            <h2>News Management Dashboard</h2>
+    
+            <!-- Stats Section -->
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>Total News</h3>
+                    <p id="total-news-management">Loading...</p>
+                </div>
+                <div class="stat-item">
+                    <h3>News by Category</h3>
+                    <ul id="category-stats">Loading...</ul>
+                </div>
+            </div>
+            <!-- Add News Form -->
+            <!-- Add News Form -->
+            <div id="add-news-form">
+                <h3>Add New News</h3>
+                <form id="news-form">
+                    <!-- Title and Category in the same line -->
+                    <div class="form-group flex-row">
+                        <div class="form-field">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" required />
+                        </div>
+                        <div class="form-field">
+                            <label for="category">Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <!-- Fixed categories will be dynamically added here -->
+                            </select>
+                        </div>
+                    </div>
+            
+                    <!-- Description in a separate line -->
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" required></textarea>
+                    </div>
+            
+                    <!-- Image and Date in the same line -->
+                    <div class="form-group flex-row">
+                        <div class="form-field">
+                            <label for="image">Image</label>
+                            <input type="file" id="image" name="image" />
+                        </div>
+                        <div class="form-field">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required />
+                        </div>
+                    </div>
+            
+                    <!-- Submit Button -->
+                    <button type="submit">Add News</button>
+                </form>                                
+            </div>
+            
+            
+
+    
+            <!-- Filter Section -->
+            <div id="filter-news">
+                <h3>Filter News</h3>
+                <div class="filter-options">
+                    <label for="category-filter">Category</label>
+                    <select id="category-filter">
+                        <option value="all">All</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Health">Health</option>
+                    </select>
+                    
+                    <label for="date-filter">Date</label>
+                    <input type="date" id="date-filter" />
+                    <button id="apply-filter-btn">Apply Filter</button>
+                </div>
+            </div>
+    
+            <!-- News Cards Section -->
+            <div id="news-cards"></div>
+        </section>
+        
+        <section id="user-management" class="section" style="display:none;">
+            <h2>User Management Dashboard</h2>
+            
+            <!-- User List -->
+            <div id="user-list">
+                <h3>Registered Users</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list-body">
+                        <!-- User rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Delete User Form -->
+            <div id="delete-user-form">
+                <h3>Delete User</h3>
+                <form id="delete-user">
+                    <label for="user-id">User ID</label>
+                    <input type="text" id="user-id" name="user-id" required>
+                    <button type="submit">Delete User</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Admin Management Section -->
+        <section id="admin-management" class="section" style="display:none;">
+            <h2>Admin Management Dashboard</h2>
+
+            <!-- Admin List -->
+            <div id="admin-list">
+                <h3>Admins</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Admin ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-list-body">
+                        <!-- Admin rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Delete Admin Form -->
+            <div id="delete-admin-form">
+                <h3>Delete Admin</h3>
+                <form id="delete-admin">
+                    <label for="admin-id">Admin ID</label>
+                    <input type="text" id="admin-id" name="admin-id" required>
+                    <button type="submit">Delete Admin</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
