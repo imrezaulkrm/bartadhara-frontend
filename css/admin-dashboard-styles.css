@@ -1,6 +1,6 @@
 /* Dashboard */
 .dashboard {
-    display: flex;
+    display: none;
     height: 100vh;
     font-family: Arial, sans-serif; /* ইউনিফর্ম ফন্ট */
 }
@@ -691,4 +691,138 @@ align-items: center;
 display: flex;
 gap: 20px;
 margin-bottom: 20px;
+}
+
+#login-modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Softer overlay effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+
+    /* Infinite background animation with smooth transition */
+    animation: backgroundMove 30s infinite linear, rgbEffect 50s ease-in-out;
+}
+
+/* Smooth background animation */
+@keyframes backgroundMove {
+    0% {
+        background: rgba(0, 0, 0, 0.2);
+    }
+    25% {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        background: rgba(0, 0, 0, 0.4);
+    }
+    75% {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* RGB Light effect with softer transitions and more colors */
+@keyframes rgbEffect {
+    0% {
+        background-color: rgb(248, 200, 145); /* Soft Peach */
+    }
+    10% {
+        background-color: rgb(153, 245, 202); /* Soft Green */
+    }
+    20% {
+        background-color: rgb(210, 164, 250); /* Soft Lavender */
+    }
+    30% {
+        background-color: rgb(240, 176, 140); /* Soft Coral */
+    }
+    40% {
+        background-color: rgb(137, 233, 233); /* Soft Aqua */
+    }
+    50% {
+        background-color: rgb(165, 92, 165); /* Soft Pink */
+    }
+    60% {
+        background-color: rgba(255, 255, 186, 1); /* Soft Yellow */
+    }
+    70% {
+        background-color: rgba(186, 211, 255, 1); /* Soft Blue */
+    }
+    80% {
+        background-color: rgba(186, 255, 186, 1); /* Soft Mint */
+    }
+    90% {
+        background-color: rgba(255, 186, 223, 1); /* Soft Rose */
+    }
+    100% {
+        background-color: rgba(255, 223, 186, 1); /* Soft Peach */
+    }
+}
+
+/* Stylish login form */
+.login-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Form sliding animation */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Input fields animation */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border: 1px solid #5e9eff;
+    box-shadow: 0px 0px 8px rgba(94, 158, 255, 0.5);
+}
+
+/* Button animation */
+button {
+    background-color: #5e9eff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #3c81d4;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #3579b8;
 }
