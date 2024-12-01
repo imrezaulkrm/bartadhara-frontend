@@ -28,7 +28,7 @@ async function updateStats() {
             categoryStatsElement.appendChild(listItem);
         }
     } catch (error) {
-        console.error("Error fetching news stats:", error);
+        //console.error("Error fetching news stats:", error);
     }
 }
 

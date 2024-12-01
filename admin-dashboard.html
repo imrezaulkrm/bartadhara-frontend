@@ -195,12 +195,16 @@
 
 /* Add News Form */
 #add-news-form {
-    margin-top: 40px;
     background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
 }
+
+    
 
 #add-news-form h3 {
     font-size: 22px;
@@ -279,9 +283,7 @@ button[type="submit"]:hover {
 }
 
 .filter-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: initial;
 }
 
 #category-filter label {
@@ -454,6 +456,250 @@ button#apply-filter-btn:hover {
 
 
 
+
+
+
+
+/* General Styles */
+#user-management {
+    padding: 0 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+
+#total-users {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    text-align: center; /* Ensure the text inside the box is centered */
+    margin: 0 auto; /* Center the entire element in its parent */
+}
+
+#add-user, #search-user {
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.usercard-delete {
+    font-size: 10px;
+    padding: 10px 0px;
+    font-family: auto;
+    background-color: #eb2c2c;
+    width: 30%;
+}
+.usercard-update {
+    font-size: 10px;
+    padding: 10px 0px;
+    font-family: auto;
+    width: 30%;
+}
+
+.usercard-delete:hover {
+    background-color: #992929; 
+}
+
+.usercard-update:hover {
+    background-color: #0056b3;
+}
+
+/* User Cards */
+#user-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-card {
+    width: 178px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.user-card button {
+    margin-top: 10px;
+    width: 45%;
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    margin-left: 300px;
+}
+
+
+/* Card styling */
+#add-user.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Title Styling */
+#add-user h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Flex layout for input fields */
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Ensure all input fields are same width */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+button[type="submit"] {
+    width: 100%; /* Ensures all inputs have the same width */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Include padding and border in element's total width/height */
+}
+
+/* Style for submit button */
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Adjust the file input */
+input[type="file"] {
+    padding: 5px;
+}
+
+/* Optional: Add some styling for form fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Success message styling */
+#success-message {
+    display: none;
+    color: #007bff;
+    margin-top: 10px;
+    text-align: center; /* Add this line to center the text */
+    font-family: auto;
+}
+
+.usercard-text {
+    margin: 5px 0px;
+}
+.usercard-text.p {
+    font-size: 12px;
+    font-family: auto;
+}
+
+.usercard-text.h {
+    font-size: 16px;
+    font-family: ui-monospace;
+    font-weight: bold;
+}
+
+
+#admin-management{
+    padding: 0 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+
+#total-admins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* admin Cards */
+#admin-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.admin-card {
+    width: 178px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.admin-card button {
+    margin-top: 10px;
+    width: 45%;
+}
+
+.stats.admin-management {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
     </style>
 </head>
 <body>
@@ -474,17 +720,14 @@ button#apply-filter-btn:hover {
         <section id="home-section" class="section">
             <h2 class="dashboard-title">Dashboard Overview</h2>
             <div class="stats">
-                <div class="stat-item">
-                    <h3>Total News</h3>
-                    <p id="total-news">Loading...</p>
+                <div class="stat-item total-news">
+                    <h3 style="margin: 10px;">Total News: <span id="total-news" style="font-weight: lighter;"> 0 </span></h3>
                 </div>
-                <div class="stat-item">
-                    <h3>Total Users</h3>
-                    <p id="total-users">Loading...</p>
+                <div class="stat-item total-news">
+                    <h3 style="margin: 10px;">Total Users: <span id="total-users" style="font-weight: lighter; display: contents;"> 0 </span></h3>
                 </div>
-                <div class="stat-item">
-                    <h3>Total Admins</h3>
-                    <p id="total-admins">Loading...</p>
+                <div class="stat-item total-news">
+                    <h3 style="margin: 10px;">Total Admins: <span id="total-admins" style="font-weight: lighter; display: contents;"> 0 </span></h3>
                 </div>
             </div>
             <div class="chart-container">
@@ -498,13 +741,12 @@ button#apply-filter-btn:hover {
     
             <!-- Stats Section -->
             <div class="stats news-management">
-                <div class="stat-item category-news">
+                <!--<div class="stat-item category-news">
                     <h3>News by Category</h3>
                     <ul id="category-stats">Loading...</ul>
-                </div>
+                </div>-->
                 <div class="stat-item total-news">
-                    <h3>Total News</h3>
-                    <p id="total-news-management">Loading...</p>
+                    <h3 style="margin: 10px;">Total News: <span id="total-news-management" style="font-weight: lighter;"> 0 </span></h3>    
                 </div>
             </div>
             <!-- Add News Form -->
@@ -629,76 +871,237 @@ button#apply-filter-btn:hover {
             </div>
         </section>
         
-        <section id="user-management" class="section" style="display:none;">
-            <h2>User Management Dashboard</h2>
+        <section id="user-management">
+            <h2 class="dashboard-title">Users Management Dashboard</h2>
+    
+            <!-- Stats Section -->
+            <div class="stats news-management">
+                <div id="total-users" class="stat-item total-news">
+                    <h3 style="margin: 10px;">Total Users: <span id="user-count" style="font-weight: lighter;">0</span></h3>
+                </div>
+            </div>
+
+            <div id="user-management">
+                <!-- Total User Count -->
+
             
-            <!-- User List -->
-            <div id="user-list">
-                <h3>Registered Users</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="user-list-body">
-                        <!-- User rows will be dynamically inserted here -->
-                    </tbody>
-                </table>
+                <!-- Add User Form -->
+                <div id="add-user" class="card">
+                    <h3>Add User</h3>
+                    <!-- Success message (Initially hidden) -->
+                    <form id="add-user-form">
+                        <!-- Name and Username in the same line -->
+                        <div class="form-group flex-row">
+                            <div class="form-field">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" placeholder="Username" required>
+                            </div>
+                        </div>
+                
+                        <!-- Email and Password in the same line -->
+                        <div class="form-group flex-row">
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                
+                        <!-- Image Section -->
+                        <div class="form-group">
+                            <label for="picture">Profile Image</label>
+                            <input type="file" id="picture" accept="image/*">
+                        </div>
+                
+                        <!-- Submit Button -->
+                        <button type="submit">Add User</button>
+                    </form>
+                    <div id="success-message" style="display: none; color: #007bff; margin-top: 10px; text-align: center; font-family: auto;">
+                        User has been added successfully!
+                    </div>
+                </div>
+                
+                
+            
+                <!-- User Cards Section -->
+                <div id="user-cards-container">
+                    <!-- User cards will be rendered here -->
+                </div>
             </div>
-
-            <!-- Delete User Form -->
-            <div id="delete-user-form">
-                <h3>Delete User</h3>
-                <form id="delete-user">
-                    <label for="user-id">User ID</label>
-                    <input type="text" id="user-id" name="user-id" required>
-                    <button type="submit">Delete User</button>
-                </form>
+            
+            <!-- Update User Popup -->
+            <div id="update-user-popup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close-btn" id="close-update-popup">&times;</span>
+                    <h2>Update User</h2>
+                    <form id="update-user-form">
+                        <input type="hidden" id="update-user-id" name="id">
+            
+                        <label for="update-name">Name:</label>
+                        <input type="text" id="update-name" name="name" required>
+                    
+                        <label for="update-email">Email:</label>
+                        <input type="email" id="update-email" name="email" required>
+                    
+                        <label for="update-username">Username:</label>
+                        <input type="text" id="update-username" name="username" required>
+                    
+                        <label for="update-password">Password:</label>
+                        <input type="password" id="update-password" name="password">
+                    
+                        <label for="update-picture">Profile Picture:</label>
+                        <input type="file" id="update-picture" name="picture">
+                    
+                        <button type="submit">Update User</button>
+                    </form>
+                </div>
             </div>
+            
         </section>
+        
 
+        
         <!-- Admin Management Section -->
-        <section id="admin-management" class="section" style="display:none;">
-            <h2>Admin Management Dashboard</h2>
-
-            <!-- Admin List -->
-            <div id="admin-list">
-                <h3>Admins</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Admin ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="admin-list-body">
-                        <!-- Admin rows will be dynamically inserted here -->
-                    </tbody>
-                </table>
+        <section id="admin-management">
+            <h2 class="dashboard-title">Admins Management Dashboard</h2>
+            <div class="stats admin-management">
+                <div id="total-admins" class="stat-item total-news" >
+                    <h3 style="margin: 10px;">Total Admins: <span id="total-admins-count" style="font-weight: lighter;">0</span></h3>
+                </div>
             </div>
 
-            <!-- Delete Admin Form -->
-            <div id="delete-admin-form">
-                <h3>Delete Admin</h3>
-                <form id="delete-admin">
-                    <label for="admin-id">Admin ID</label>
-                    <input type="text" id="admin-id" name="admin-id" required>
-                    <button type="submit">Delete Admin</button>
+            <div id="admin-management">
+                <!-- Total User Count -->
+
+            
+                <!-- Add User Form -->
+                <div id="add-user" class="card">
+                    <h3>Add Admin</h3>
+                    <!-- Success message (Initially hidden) -->
+                    <form id="add-admin-form">
+                        <!-- Name and Username in the same line -->
+                        <div class="form-group flex-row">
+                            <div class="form-field">
+                                <label for="name">Name</label>
+                                <input type="text" id="admin-name" placeholder="Name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="username">Username</label>
+                                <input type="text" id="admin-username" placeholder="Username" required>
+                            </div>
+                        </div>
+                
+                        <!-- Email and Password in the same line -->
+                        <div class="form-group flex-row">
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input type="email" id="admin-email" placeholder="Email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="password">Password</label>
+                                <input type="password" id="admin-password" placeholder="Password" required>
+                            </div>
+                        </div>
+                
+                        <!-- Image Section -->
+                        <div class="form-group">
+                            <label for="picture">Profile Image</label>
+                            <input type="file" id="admin-picture" accept="image/*">
+                        </div>
+                
+                        <!-- Submit Button -->
+                        <button type="submit">Add Admin</button>
+                    </form>
+                    <div id="admin-success-message" style="display: none; color: #007bff; margin-top: 10px; text-align: center; font-family: auto;">
+                        Admin has been added successfully!
+                    </div>
+                </div>
+                
+                
+            
+                <!-- User Cards Section -->
+                <div id="admin-cards-container">
+                    <!-- User cards will be rendered here -->
+                </div>
+            </div>
+
+        <!--    <div class="admin-management-container">
+            
+                <form class="admin-form" id="add-admin-form">
+                    <h3>Add Admin</h3>
+                    <input type="text" id="admin-name" placeholder="Name" required>
+                    <input type="text" id="admin-username" placeholder="Username" required>
+                    <input type="email" id="admin-email" placeholder="Email" required>
+                    <input type="password" id="admin-password" placeholder="Password" required>
+                    <input type="file" id="admin-picture" accept="image/*">
+                    <button type="submit">Add Admin</button>
                 </form>
+            
+                <div class="admin-cards-container" id="admin-cards-container">
+                     Admin cards will be displayed here 
+                </div>
+            </div> -->
+            
+            <!-- Popup for Admin Update -->
+            <div id="admin-update-popup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close-btn" id="admin-close-update-popup">&times;</span>
+                    <h2>Update User</h2>
+                    <form id="update-user-form">
+                        <input type="hidden" id="update-user-id" name="id">
+            
+                        <label for="update-name">Name:</label>
+                        <input type="text" id="update-admin-name" name="name" required>
+                    
+                        <label for="update-email">Email:</label>
+                        <input type="email" id="update-admin-email" name="email" required>
+                    
+                        <label for="update-username">Username:</label>
+                        <input type="text" id="update-admin-username" name="username" required>
+                    
+                        <label for="update-password">Password:</label>
+                        <input type="password" id="update-admin-password" name="password">
+                    
+                        <label for="update-picture">Profile Picture:</label>
+                        <input type="file" id="update-admin-picture" name="picture">
+                    
+                        <button type="button" id="update-admin-btn">Update Admin</button>
+                    </form>
+                </div>
             </div>
+            <!--<div class="popup" id="admin-update-popup">
+                <div class="popup-content">
+                    <h3>Update Admin</h3>
+                    <input type="text" id="update-admin-name" placeholder="Name" required>
+                    <input type="text" id="update-admin-username" placeholder="Username" required>
+                    <input type="email" id="update-admin-email" placeholder="Email" required>
+                    <input type="password" id="update-admin-password" placeholder="Password">
+                    <input type="file" id="update-admin-picture" accept="image/*">
+                    <button id="update-admin-btn">Update Admin</button>
+                    <button onclick="closePopup()">Cancel</button>
+                </div>
+            </div> -->
+            
         </section>
+        
+        
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
-    <script src="navigation.js"></script>
-    <script src="app.js"></script>
+    <script src="js/admin-dashboard-home.js"></script>
+    <script src="js/section-navigation.js"></script>
+    <script src="js/admin-news-management.js"></script>
+    <script src="js/admin-users-management.js"></script>
+    <script src="js/admin-admins-management.js"></script>
+    
 
 </body>
 </html>
