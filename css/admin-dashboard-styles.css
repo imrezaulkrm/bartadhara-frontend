@@ -708,7 +708,7 @@ margin-bottom: 20px;
     overflow: hidden;
 
     /* Infinite background animation with smooth transition */
-    animation: backgroundMove 30s infinite linear, rgbEffect 50s ease-in-out;
+    animation: backgroundMove 30s infinite linear, rgbEffect 80s infinite ease-in-out;
 }
 
 /* Smooth background animation */
