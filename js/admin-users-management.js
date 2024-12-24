@@ -1,3 +1,9 @@
+// API Base URL
+//const apiBaseUrl = 'bartadhara';
+// API Base URL
+//const apiBaseUrl = 'http://localhost:8080';
+const apiBaseUrl = 'http://192.168.49.2/api';
+
 // DOM Elements
 const addUserForm = document.getElementById('add-user-form');
 const userCardsContainer = document.getElementById('user-cards-container');
@@ -14,7 +20,7 @@ const updatePassword = document.getElementById('update-password');
 // Fetch all users from the backend
 async function fetchUsers() {
     try {
-        const response = await fetch('http://localhost:8080/users');
+        const response = await fetch(`${apiBaseUrl}/users`);
         const users = await response.json();
         userCount.innerText = users.length; // Update total user count
         renderUsers(users);
@@ -63,7 +69,7 @@ addUserForm.onsubmit = async function (e) {
     }
 
     try {
-        const response = await fetch('http://localhost:8080/users', {
+        const response = await fetch(`${apiBaseUrl}/users`, {
             method: 'POST',
             body: formData,
         });
@@ -100,7 +106,7 @@ form.addEventListener('submit', function (e) {
 
 // Open update user form with pre-filled data
 function openUpdateUserForm(userId) {
-    fetch(`http://localhost:8080/users/${userId}`)
+    fetch(`${apiBaseUrl}/users/${userId}`)
         .then(response => response.json())
         .then(user => {
             // Pre-fill form data
@@ -143,7 +149,7 @@ document.getElementById('update-user-form').onsubmit = async function (e) {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/users/${updatedUser.id}`, {
+        const response = await fetch(`${apiBaseUrl}/users/${updatedUser.id}`, {
             method: 'PUT',
             body: formData,
         });
@@ -172,7 +178,7 @@ function closeUpdatePopup() {
 
 async function deleteUser(userId) {
     try {
-        const response = await fetch(`http://localhost:8080/users/${userId}`, {
+        const response = await fetch(`${apiBaseUrl}/users/${userId}`, {
             method: 'DELETE',
         });
 

@@ -1,19 +1,31 @@
 // Function to fetch admin data
 async function fetchAdmins() {
-  const response = await fetch('http://localhost:8080/admin'); // API to fetch all admins
+  //const response = await fetch('bartadhara/admin'); // API to fetch all admins
+  //const response = await fetch('http://localhost:8080/admin'); // API to fetch all admins
+  const response = await fetch('http://192.168.49.2/api/admin')
   const admins = await response.json();
   displayAdmins(admins);
 }
+function fixPictureURL(picture) {
+  const API_BASE_URL = 'http://192.168.49.2/api';  // Base URL for images
+  if (picture.startsWith('http://localhost:8080')) {
+      return picture.replace('http://localhost:8080', API_BASE_URL);
+  }
+  return picture;
+}
 
-// Function to display admins in card format
 function displayAdmins(admins) {
   const adminCardsContainer = document.getElementById('admin-cards-container');
   adminCardsContainer.innerHTML = '';
   admins.forEach(admin => {
       const adminCard = document.createElement('div');
       adminCard.classList.add('admin-card');
+      
+      // Fix image URL
+      const fixedPictureUrl = fixPictureURL(admin.picture);
+      
       adminCard.innerHTML = `
-          <img src="${admin.picture || 'default.jpg'}" alt="Admin Picture">
+          <img src="${fixedPictureUrl || 'default.jpg'}" alt="Admin Picture">
           <h4 class="usercard-text h">${admin.name}</h4>
           <p class="usercard-text p">Username: ${admin.username}</p>
           <p class="usercard-text p">Email: ${admin.email}</p>
@@ -25,12 +37,15 @@ function displayAdmins(admins) {
   document.getElementById('total-admins-count').textContent = admins.length;
 }
 
+
 // Function to open update popup
 function openUpdatePopup(adminId) {
   const popup = document.getElementById('admin-update-popup');
   popup.style.display = 'flex';
   // Fetch admin details and populate form
-  fetch(`http://localhost:8080/admin/${adminId}`)
+  // fetch(`http://localhost:8080/admin/${adminId}`)
+  fetch(`http://192.168.49.2/api/admin/${adminId}`)
+  //fetch(`bartadhara/admin/${adminId}`)
       .then(response => response.json())
       .then(admin => {
           document.getElementById('update-user-id').value = admin.id; // Set the admin ID for updating
@@ -62,7 +77,9 @@ async function updateAdmin(adminId) {
   if (password) formData.append('password', password);
   if (picture) formData.append('picture', picture);
 
-  const response = await fetch(`http://localhost:8080/admin/${adminId}`, {
+  //const response = await fetch(`bartadhara/admin/${adminId}`, {
+  //const response = await fetch(`http://localhost:8080/admin/${adminId}`, {
+  const response = await fetch(`http://192.168.49.2/api/admin/${adminId}`, {
       method: 'PUT',
       body: formData,
   });
@@ -77,7 +94,9 @@ async function updateAdmin(adminId) {
 
 // Function to delete admin
 async function deleteAdmin(adminId) {
-  const response = await fetch(`http://localhost:8080/admin/${adminId}`, {
+  //const response = await fetch(`bartadhara/admin/${adminId}`, {
+  //const response = await fetch(`http://localhost:8080/admin/${adminId}`, {
+  const response = await fetch(`http://192.168.49.2/api/admin/${adminId}`, {
       method: 'DELETE',
   });
 
@@ -105,7 +124,9 @@ document.getElementById('add-admin-form').addEventListener('submit', async (even
   formData.append('password', password);
   if (picture) formData.append('picture', picture);
 
-  const response = await fetch('http://localhost:8080/admin/register', {
+  //const response = await fetch('bartadhara/admin/register', {
+  //const response = await fetch('http://localhost:8080/admin/register', {
+  const response = await fetch('http://192.168.49.2/api/admin/register', {
       method: 'POST',
       body: formData,
   });

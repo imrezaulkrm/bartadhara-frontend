@@ -16,8 +16,9 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     };
 
     console.log("Sending credentials:", credentials);
-
-    fetch('http://localhost:8080/admin/login', {
+    // fetch('bartadhara/admin/login', {
+    fetch('http://192.168.49.2/api/admin/login', {
+    // fetch('http://localhost:8080/admin/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

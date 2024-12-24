@@ -6,22 +6,30 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchData() {
         try {
             // Fetching Total News Count
-            const newsResponse = await fetch('http://localhost:8080/news');
+            //const newsResponse = await fetch('bartadhara/news');
+            //const newsResponse = await fetch('http://localhost:8080/news');
+            const newsResponse = await fetch('http://192.168.49.2/api/news');
             const newsData = await newsResponse.json();
             document.getElementById('total-news').textContent = newsData.length;
 
             // Fetching Total Users Count
-            const usersResponse = await fetch('http://localhost:8080/users');
+            //const usersResponse = await fetch('bartadhara/users');
+            //const usersResponse = await fetch('http://localhost:8080/users');
+            const usersResponse = await fetch('http://192.168.49.2/api/users');
             const usersData = await usersResponse.json();
             document.getElementById('total-users').textContent = usersData.length;
 
             // Fetching Total Admins Count
-            const adminsResponse = await fetch('http://localhost:8080/admin');
+            //const adminsResponse = await fetch('bartadhara/admin');
+            const adminsResponse = await fetch('http://192.168.49.2/api/admin');
+            //const adminsResponse = await fetch('http://localhost:8080/admin');
             const adminsData = await adminsResponse.json();
             document.getElementById('total-admins').textContent = adminsData.length;
 
             // Fetching Categories from News Data
-            const categoryResponse = await fetch('http://localhost:8080/news');
+            //const categoryResponse = await fetch('bartadhara/news');
+            const categoryResponse = await fetch('http://192.168.49.2/api/news');
+            //const categoryResponse = await fetch('http://localhost:8080/news');
             const categoryData = await categoryResponse.json();
 
             // Extracting Categories from News

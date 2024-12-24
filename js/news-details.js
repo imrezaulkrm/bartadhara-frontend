@@ -1,3 +1,8 @@
+// Define API base URL
+//const apiBaseUrl = 'bartadhara';
+//const apiBaseUrl = 'http://localhost:8080';
+const apiBaseUrl = 'http://192.168.49.2/api';
+
 document.addEventListener('DOMContentLoaded', async () => {
     const newsDetailsContainer = document.getElementById('news-details');
     
@@ -7,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (newsID) {
         try {
-            const response = await fetch(`http://localhost:8080/news/${newsID}`);
+            const response = await fetch(`${apiBaseUrl}/news/${newsID}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch news details');
             }

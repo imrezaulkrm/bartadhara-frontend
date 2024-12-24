@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     try {
-        const response = await fetch(`http://localhost:8080/users/${userId}`);
+        const response = await fetch(`http://192.168.49.2/api/users/${userId}`);
+        //const response = await fetch(`bartadhara/users/${userId}`);
+        //const response = await fetch(`http://localhost:8080/users/${userId}`);
         const userData = await response.json();
 
         // ইউজারের ছবি এবং তথ্য উপাদানগুলি খুঁজে বের করুন

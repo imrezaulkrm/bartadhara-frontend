@@ -1,4 +1,6 @@
-const API_BASE_URL = "http://localhost:8080"; // আপনার সার্ভারের ঠিকানা
+//const API_BASE_URL = "bartadhara"; // আপনার সার্ভারের ঠিকানা
+const API_BASE_URL = "http://192.168.49.2/api";
+// const API_BASE_URL = "http://localhost:8080"; // আপনার সার্ভারের ঠিকানা
 
 // Fetch all news and update stats
 async function updateStats() {

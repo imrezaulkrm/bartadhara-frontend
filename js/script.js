@@ -2,8 +2,8 @@
 // Placeholder for any interactive functionality (e.g., dynamic content or navigation toggle)
 // scripts.js
 
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Define constants for elements
     const newsContainer = document.getElementById('news-container');
     const categoryFilters = document.getElementById('category-filters');
     const userInfo = document.getElementById('user-info');
@@ -16,22 +16,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextPageBtn = document.getElementById('next-page');
     const currentPageDisplay = document.getElementById('current-page');
 
+    // Set the base URL for API and other resources
+    const API_BASE_URL = 'http://192.168.49.2/api';
+
+    // Set other relevant links
+    const userProfilePage = 'user-profile.html';
+    const newsDetailsPage = 'news-details.html';
+
     let newsData = [];
     let currentPage = 1;
     const itemsPerPage = 20;
     let selectedCategories = [];
 
     // Fetch user info from localStorage
+    // Function to fix the image URL (same as for news pictures)
+    function fixPictureURL(picture) {
+        const API_BASE_URL = 'http://192.168.49.2/api';
+        if (picture.startsWith('http://localhost:8080')) {
+            return picture.replace('http://localhost:8080', API_BASE_URL);
+        }
+        return picture;
+    }
+
+    // Fetch user info from localStorage
     const user = JSON.parse(localStorage.getItem('user'));
 
+    // Check if the user exists in localStorage
     if (user) {
-        userPicture.src = user.picture || 'default-user.png';
+        // Fix the user picture URL using the fixPictureURL function
+        const fixedPictureUrl = fixPictureURL(user.picture);
+
+        // Set the image source
+        userPicture.src = fixedPictureUrl || 'default-user.png'; // Use default if no picture
+
+        // Show user info and hide authentication links
         userInfo.style.display = 'flex';
-        authLinks.style.display = 'none';
+        authLinks.style.display = 'none'; // Assuming authLinks is defined somewhere in your code
     } else {
+        // Hide user info and show authentication links if no user is logged in
         userInfo.style.display = 'none';
-        authLinks.style.display = 'flex';
+        authLinks.style.display = 'flex'; // Assuming authLinks is defined somewhere in your code
     }
+
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
@@ -45,17 +71,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userPicture) {
         userPicture.addEventListener('click', () => {
             // Redirect to the user profile page with user ID or username
-            window.location.href = `user-profile.html?id=${user.id}`;
+            window.location.href = `${userProfilePage}?id=${user.id}`;
         });
+    }
+
+    // Function to fix image URLs
+    function fixPictureURL(picture) {
+        const API_BASE_URL = 'http://192.168.49.2/api';
+        if (picture.startsWith('http://localhost:8080')) {
+            return picture.replace('http://localhost:8080', API_BASE_URL);
+        }
+        return picture;
     }
 
     // Load news data from server
     async function loadNews() {
         try {
-            const response = await fetch('http://localhost:8080/news');
+            const response = await fetch(`${API_BASE_URL}/news`);
             if (!response.ok) throw new Error('Failed to fetch news');
 
             newsData = await response.json();
+
+            // Fix image URLs
+            newsData.forEach(news => {
+                if (news.image) {
+                    news.image = fixPictureURL(news.image);
+                }
+            });
+
             // Sort news by date (newest first)
             newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -110,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.see-more').forEach(button => {
                 button.addEventListener('click', () => {
                     const newsID = button.getAttribute('data-id');
-        
+
                     // Open the news details in a new tab
-                    window.open(`news-details.html?id=${newsID}`, '_blank');
+                    window.open(`${newsDetailsPage}?id=${newsID}`, '_blank');
                 });
             });
         });
@@ -161,12 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             applyFilters();
         });
-    }
-
-    // Navigate to news details page
-    function viewNewsDetails(newsID) {
-        console.log(`Navigating to news details with ID: ${newsID}`);
-        window.location.href = `news-details.html?id=${newsID}`;
     }
 
     // Pagination button event listeners

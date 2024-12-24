@@ -1,3 +1,8 @@
+// Define API base URL
+//const apiBaseUrl = 'bartadhara';
+//const apiBaseUrl = 'http://localhost:8080';
+const apiBaseUrl = 'http://192.168.49.2/api';
+
 document.getElementById('registration-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // ফর্মের ডিফল্ট সাবমিশন আচরণ বন্ধ করা
 
@@ -22,7 +27,7 @@ document.getElementById('registration-form').addEventListener('submit', async (e
 
     try {
         // সার্ভারে ডেটা পাঠানো
-        const response = await fetch('http://localhost:8080/users', {
+        const response = await fetch(`${apiBaseUrl}/users`, {
             method: 'POST',
             body: formData, // FormData অবজেক্ট পাঠানো
         });
