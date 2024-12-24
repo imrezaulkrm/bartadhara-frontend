@@ -1,6 +1,4 @@
 // Define constants for URLs
-//const baseURL = 'bartadhara';
-//const baseURL = 'http://localhost:8080';
 const baseURL = 'http://192.168.49.2/api';
 const userProfileURL = `${baseURL}/users`;
 
@@ -17,6 +15,10 @@ async function fetchUserByID() {
     document.getElementById('name').value = user.name;
     document.getElementById('username').value = user.username;
     document.getElementById('email').value = user.email;
+
+    // Fix the picture URL if needed
+    const userPicture = fixPictureURL(user.picture || 'default-avatar.png');
+    document.getElementById('picture-preview').src = userPicture; // Assuming you have an image preview element with id 'picture-preview'
 }
 
 // Fetch user data when the page loads
@@ -56,3 +58,12 @@ document.getElementById('update-form').addEventListener('submit', async function
         alert('Error updating user');
     }
 });
+
+// Function to fix the picture URL
+function fixPictureURL(picture) {
+    const API_BASE_URL = 'http://192.168.49.2/api';  // Base URL for images
+    if (picture.startsWith('http://localhost:8080')) {
+        return picture.replace('http://localhost:8080', API_BASE_URL);
+    }
+    return picture;
+}

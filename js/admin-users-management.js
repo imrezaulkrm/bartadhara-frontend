@@ -28,7 +28,13 @@ async function fetchUsers() {
         console.error('Error fetching users:', error);
     }
 }
-
+function fixPictureURL(picture) {
+    const API_BASE_URL = 'http://192.168.49.2/api';  // Base URL for images
+    if (picture.startsWith('http://localhost:8080')) {
+        return picture.replace('http://localhost:8080', API_BASE_URL);
+    }
+    return picture;
+}
 // Render users as cards
 function renderUsers(users) {
     userCardsContainer.innerHTML = ''; // Clear existing cards
@@ -36,7 +42,7 @@ function renderUsers(users) {
         const userCard = document.createElement('div');
         userCard.classList.add('user-card');
         userCard.innerHTML = `
-            <img src="${user.picture || 'default-avatar.png'}" alt="${user.name}">
+            <img src="${fixPictureURL(user.picture || 'default-avatar.png')}" alt="${user.name}">
             <h4 class="usercard-text h">${user.name}</h4>
             <p class="usercard-text p">Username: ${user.username}</p>
             <p class="usercard-text p">Email: ${user.email}</p>
@@ -46,6 +52,7 @@ function renderUsers(users) {
         userCardsContainer.appendChild(userCard);
     });
 }
+
 
 // Add new user
 addUserForm.onsubmit = async function (e) {

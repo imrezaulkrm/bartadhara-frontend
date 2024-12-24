@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // নিউজ ডেটা এই HTML এলিমেন্টে সেট করা
             newsDetailsContainer.innerHTML = `
                 <h2>${news.title}</h2>
-                <img src="${news.image}" alt="${news.title}" onerror="this.onerror=null; this.src='fallback-image.jpg';">
+                <img src="${fixPictureURL(news.image || 'fallback-image.jpg')}" alt="${news.title}" onerror="this.onerror=null; this.src='fallback-image.jpg';">
                 <p>${news.description}</p>
                 <div>
                     <span>Category: ${news.category}</span>
@@ -37,3 +37,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         newsDetailsContainer.innerHTML = '<p>No news found.</p>';
     }
 });
+
+// Function to fix the picture URL
+function fixPictureURL(picture) {
+    const API_BASE_URL = 'http://192.168.49.2/api';  // Base URL for images
+    if (picture.startsWith('http://localhost:8080')) {
+        return picture.replace('http://localhost:8080', API_BASE_URL);
+    }
+    return picture;
+}

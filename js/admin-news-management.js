@@ -2,6 +2,14 @@
 const API_BASE_URL = "http://192.168.49.2/api";
 // const API_BASE_URL = "http://localhost:8080"; // আপনার সার্ভারের ঠিকানা
 
+function fixPictureURL(picture) {
+    const API_BASE_URL = 'http://192.168.49.2/api';  // Base URL for images
+    if (picture.startsWith('http://localhost:8080')) {
+        return picture.replace('http://localhost:8080', API_BASE_URL);
+    }
+    return picture;
+}
+
 // Fetch all news and update stats
 async function updateStats() {
     try {
@@ -132,7 +140,7 @@ const displayNews = (news) => {
         const newsCard = document.createElement("div");
         newsCard.classList.add("news-card");
         newsCard.innerHTML = `
-            <img src="${item.image || 'placeholder.jpg'}" alt="News Image" />
+            <img src="${fixPictureURL(item.image || 'placeholder.jpg')}" alt="News Image" />
             <h4>${item.title}</h4>
             <p class="news-description">${item.description}</p>
             <div class="card-buttons">
@@ -145,6 +153,29 @@ const displayNews = (news) => {
         newsCardsContainer.appendChild(newsCard);
     });
 };
+
+// View full news in a modal
+const viewNews = async (id) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/news/${id}`);
+        const newsItem = await response.json();
+
+        document.getElementById("view-title").textContent = newsItem.title;
+        document.getElementById("view-description").textContent = newsItem.description;
+        document.getElementById("view-category").textContent = `Category: ${newsItem.category}`;
+        document.getElementById("view-date").textContent = `Date: ${newsItem.date}`;
+
+        // Use fixPictureURL to adjust the image URL
+        const newsImage = document.getElementById("view-image");
+        newsImage.src = fixPictureURL(newsItem.image || "placeholder.jpg");
+
+        // Show the modal
+        document.getElementById("view-modal").style.display = "block";
+    } catch (error) {
+        console.error("Error fetching news details:", error);
+    }
+};
+
 
 
 // Filter news based on category and date
@@ -182,25 +213,6 @@ const deleteNews = async (id) => {
         loadNews();
     } catch (error) {
         console.error("Error deleting news:", error);
-    }
-};
-
-// View full news in a modal
-const viewNews = async (id) => {
-    try {
-        const response = await fetch(`${API_BASE_URL}/news/${id}`);
-        const newsItem = await response.json();
-
-        document.getElementById("view-title").textContent = newsItem.title;
-        document.getElementById("view-description").textContent = newsItem.description;
-        document.getElementById("view-category").textContent = `Category: ${newsItem.category}`;
-        document.getElementById("view-date").textContent = `Date: ${newsItem.date}`;
-        document.getElementById("view-image").src = newsItem.image || "placeholder.jpg";
-
-        // Show the modal
-        document.getElementById("view-modal").style.display = "block";
-    } catch (error) {
-        console.error("Error fetching news details:", error);
     }
 };
 
