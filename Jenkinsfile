@@ -58,7 +58,7 @@ pipeline {
                 sh "ls"
                 sh "cat k8s/frontend.yml"
                 // Construct the sed command to change only line 17
-                sh """sed -i '17s#image:.*#image: ${IMAGE_NAME}:${IMAGE_TAG}#' k8s/frontend.yml"""
+                sh """sed -i '19s#image:.*#image: ${IMAGE_NAME}:${IMAGE_TAG}#' k8s/frontend.yml"""
                 sh "cat k8s/frontend.yml"
             }
         }
